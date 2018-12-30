@@ -1,14 +1,20 @@
 # coding=utf-8
 from appium import webdriver
 from src.Utils.Common import singleton
-from config import driver_configure
-from config.driver_configure import DeviceParameter
+from src.common import driver_configure
+from src.common.driver_configure import DeviceParameter
+from src.common.driver_configure import VirtualDeviceParameter
+from src.Utils.DevicesInfo import DevicesInfo
 
 
 @singleton
 class GetAppDriver:
     def __init__(self):
-        self.__driver = webdriver.Remote(driver_configure.desired_IP, DeviceParameter().get_desired_caps())
+        device_info = DevicesInfo()
+        if device_info.isOnlyOneDevice():
+            self.__driver = webdriver.Remote(driver_configure.desired_IP, DeviceParameter().get_desired_caps())
+        else:
+            self.__driver = webdriver.Remote(driver_configure.desired_IP, VirtualDeviceParameter().get_desired())
 
     def get_driver(self):
         return self.__driver

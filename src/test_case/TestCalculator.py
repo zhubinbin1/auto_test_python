@@ -1,15 +1,20 @@
 # coding=utf-8
 
-from appium import webdriver
-from config import driver_configure
 from src.common.GetAppDriver import GetAppDriver
-from src.Utils.GetDevicesInfo import GetDevicesInfo
+from src.Utils.DevicesInfo import DevicesInfo
 import unittest
 import time
 from src.Utils.Tools import Tools
 
-# GetAppDriver().get_driver()
-print(GetDevicesInfo().GetPackages())
+
+def test():
+    device_info = DevicesInfo()
+    device_info.get_serialno()
+    # device_info.print_device_info()
+    driver = GetAppDriver().get_driver()
+
+
+test()
 
 
 class CalTest(unittest.TestCase):
