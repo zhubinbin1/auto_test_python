@@ -4,10 +4,18 @@
 description:邮件发送最新的测试报告
 '''
 import os, smtplib, os.path
-from config import GlobalParameter as gl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from src.Utils.FileUtil import report_file_path
+from src.utils.FileUtil import report_file_path
+from src.utils.FileUtil import read_email_user, read_file_by_read, email_title_p
+
+# 设置发送测试报告的公共邮箱、用户名和密码
+# https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256
+#  password :  hhntpsqaangwjaib
+smtp_sever = 'smtp.qq.com'  # 邮箱SMTP服务，各大运营商的smtp服务可以在网上找，然后可以在foxmail这些工具中验正
+email_name = "1415095526@qq.com"  # 发件人名称
+email_password = "hhntpsqaangwjaib"  # 发件人登录密码
+email_To = read_email_user()  # 收件人
 
 
 class SendEmail:
@@ -25,13 +33,13 @@ class SendEmail:
         # 定义附件名称（附件的名称可以随便定义，你写的是什么邮件里面显示的就是什么）
         report_file["Content-Disposition"] = 'attachment;filename=' + report_name
         msg.attach(report_file)  # 添加附件
-        msg['Subject'] = 'startMaker APP自动化测试报告:' + report_name  # 邮件标题
-        msg['From'] = gl.email_name  # 发件人
-        msg['To'] = gl.email_To  # 收件人列表
+        msg['Subject'] = read_file_by_read(email_title_p()) + report_name  # 邮件标题
+        msg['From'] = email_name  # 发件人
+        msg['To'] = ";".join(email_To)  # 收件人列表
         try:
-            server = smtplib.SMTP(gl.smtp_sever)
-            server.login(gl.email_name, gl.email_password)
-            server.sendmail(msg['From'], msg['To'].split(';'), msg.as_string())
+            server = smtplib.SMTP(smtp_sever)
+            server.login(email_name, email_password)
+            server.sendmail(msg['From'], email_To, msg.as_string())
             server.quit()
         except smtplib.SMTPException as e:
             print(e)

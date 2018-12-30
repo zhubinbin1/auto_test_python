@@ -5,7 +5,7 @@ description:测试登录和退出功能
 import unittest
 
 # from src.pages import index_page, myInfo_page, login_page, relative_page
-from src.Utils import GestureOperation
+from src.utils import GestureOperation
 from src.common.GetAppDriver import GetAppDriver
 from src.page import LoginPage
 

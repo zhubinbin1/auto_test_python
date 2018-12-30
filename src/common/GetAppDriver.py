@@ -3,7 +3,7 @@ from appium import webdriver
 from src.common.Common import singleton
 from src.common import DriverConfigure
 from src.common.DriverConfigure import VirtualDeviceParameter
-from src.Utils.DevicesInfo import DevicesInfo
+from src.utils.DevicesInfo import DevicesInfo
 
 
 @singleton

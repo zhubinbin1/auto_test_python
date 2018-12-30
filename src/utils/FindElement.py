@@ -1,6 +1,6 @@
 # coding:UTF-8
 from src.common.GetAppDriver import GetAppDriver
-from src.Utils.Tools import Tools
+from src.utils.Tools import Tools
 from appium.webdriver.webdriver import WebDriverWait
 
 
