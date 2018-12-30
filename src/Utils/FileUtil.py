@@ -20,12 +20,17 @@ def img_file_path():
     return img_file
 
 
+# src 目录
 def project_path():
     return os.path.abspath(os.path.join(os.path.dirname(os.path.split(os.path.realpath(__file__))[0]), '.'))
 
 
+def project_parent_path():
+    return os.path.abspath(os.path.dirname(project_path()))
+
+
 def report_file_path():
-    report_path = os.path.abspath(os.path.dirname(project_path())) + "/report/"
+    report_path = project_parent_path() + "/report/"
     create_current_path(report_path)
     return report_path
 
@@ -36,7 +41,7 @@ def report_file_name():
 
 # src/test_case目录下
 def test_case_path():
-    test_case_path = project_path()
+    test_case_path = project_parent_path()
     create_current_path(test_case_path)
     return test_case_path
 
