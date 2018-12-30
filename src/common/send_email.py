@@ -11,7 +11,7 @@ from email.mime.text import MIMEText
 
 class send_email:
     # 定义邮件内容
-    def email_init(self, report, reportName):
+    def email_init(self, report, report_name):
         with open(report, 'rb')as f:
             mail_body = f.read()
 
@@ -21,9 +21,9 @@ class send_email:
         msg.attach(MIMEText(mail_body, 'html', 'utf-8'))
         report_file = MIMEText(mail_body, 'html', 'utf-8')
         # 定义附件名称（附件的名称可以随便定义，你写的是什么邮件里面显示的就是什么）
-        report_file["Content-Disposition"] = 'attachment;filename=' + reportName
+        report_file["Content-Disposition"] = 'attachment;filename=' + report_name
         msg.attach(report_file)  # 添加附件
-        msg['Subject'] = '88APP自动化测试报告:' + reportName  # 邮件标题
+        msg['Subject'] = 'startMaker APP自动化测试报告:' + report_name  # 邮件标题
         msg['From'] = gl.email_name  # 发件人
         msg['To'] = gl.email_To  # 收件人列表
         try:
@@ -31,7 +31,8 @@ class send_email:
             server.login(gl.email_name, gl.email_password)
             server.sendmail(msg['From'], msg['To'].split(';'), msg.as_string())
             server.quit()
-        except smtplib.SMTPException:
+        except smtplib.SMTPException as e:
+            print(e)
             print(u'邮件发送测试报告失败 at' + __file__)
 
     def sendReport(self):

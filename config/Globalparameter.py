@@ -15,7 +15,9 @@ test_case_path = project_path + "/src/test_case"
 report_path = project_path + "/report/"
 report_name = report_path + time.strftime('%Y%m%d%H%S', time.localtime())
 # 设置发送测试报告的公共邮箱、用户名和密码
-smtp_sever = 'smtp.exmail.qq.com'  # 邮箱SMTP服务，各大运营商的smtp服务可以在网上找，然后可以在foxmail这些工具中验正
+# https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256
+#  password :  hhntpsqaangwjaib
+smtp_sever = 'smtp.qq.com'  # 邮箱SMTP服务，各大运营商的smtp服务可以在网上找，然后可以在foxmail这些工具中验正
 email_name = "1415095526@qq.com"  # 发件人名称
-email_password = "zhubinbin123"  # 发件人登录密码
-email_To = '1415095526@qq.com'  # 收件人
+email_password = "hhntpsqaangwjaib"  # 发件人登录密码
+email_To = "binbin.zhu@ushow.media; 1415095526@qq.com"  # 收件人
