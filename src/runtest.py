@@ -7,12 +7,15 @@ import unittest, time
 from lib import HTMLTestRunner
 from config.Globalparameter import test_case_path, report_name
 from src.common import send_email
+import os
 
 # 构建测试集,包含src/test_case目录下的所有以test开头的.py文件
 suite = unittest.defaultTestLoader.discover(start_dir=test_case_path, pattern='test*.py')
 
 # 执行测试
 if __name__ == "__main__":
+    if not os.path.exists(report_name):
+        os.makedirs(report_name)
     report = report_name + "Report.html"
     fb = open(report, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
