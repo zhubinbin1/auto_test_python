@@ -25,4 +25,4 @@ if __name__ == "__main__":
     # 发送邮件
     time.sleep(10)  # 设置睡眠时间，等待测试报告生成完毕（这里被坑了＝＝）
     email = send_email.send_email()
-    email.sendReport()
+    # email.sendReport()
