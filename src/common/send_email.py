@@ -11,7 +11,8 @@ from email.mime.text import MIMEText
 
 class send_email:
     # 定义邮件内容
-    def email_init(self, report, report_name):
+    @staticmethod
+    def email_init(report, report_name):
         with open(report, 'rb')as f:
             mail_body = f.read()
 

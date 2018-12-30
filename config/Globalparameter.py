@@ -9,6 +9,7 @@ device_version = "9"
 app_package = "com.android.calculator2"
 app_activity = ".Calculator"
 app_path = "/Users/binbin/Desktop/thevoiceDebug-minApi17-x86.apk"
+pattern = "test*.py"
 
 project_path = os.path.abspath(os.path.join(os.path.dirname(os.path.split(os.path.realpath(__file__))[0]), '.'))
 test_case_path = project_path + "/src/test_case"

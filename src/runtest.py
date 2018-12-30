@@ -27,12 +27,12 @@ if __name__ == "__main__":
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=fb,
         title=u'startMaker 自动化测试报告',
-        description=u'项目描述：生产环境'
+        description=u'项目描述：python脚本自动化 生成测试报告--by zhubin'
     )
     runner.run(suite)
     fb.close()
     # 发送邮件
-    time.sleep(10)  # 设置睡眠时间，等待测试报告生成完毕（这里被坑了＝＝）
+    time.sleep(10)  # 设置睡眠时间，等待测试报告生成完毕
     email = send_email.send_email()
     print("测试报告成功，准备发送邮件")
     # email.sendReport()
