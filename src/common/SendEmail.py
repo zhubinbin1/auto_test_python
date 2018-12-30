@@ -4,13 +4,13 @@
 description:邮件发送最新的测试报告
 '''
 import os, smtplib, os.path
-from config import Globalparameter as gl
+from config import GlobalParameter as gl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from src.Utils.FileUtil import report_file_path
 
 
-class send_email:
+class SendEmail:
     # 定义邮件内容
     @staticmethod
     def email_init(report, report_name):
@@ -37,7 +37,7 @@ class send_email:
             print(e)
             print(u'邮件发送测试报告失败 at' + __file__)
 
-    def sendReport(self):
+    def send_report(self):
         # 找到最新的测试报告
         report_list = os.listdir(report_file_path())
         report_list.sort(

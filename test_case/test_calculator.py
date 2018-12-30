@@ -15,22 +15,51 @@ def test():
     print(driver.page_source)
 
 
-class CalTest(unittest.TestCase):
+class TestCal(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.driver = GetAppDriver().get_driver()
+        driver = GetAppDriver()
+        cls.driver = driver.get_driver()
+        print("TestCal  setUpClass")
+
+    def test_calcLogin(self):
         test()
-        time.sleep(5)
-
-    def setUp(self):
-        time.sleep(2)
-
-    def tearDown(self):
-        # 截图
-        Tools().get_images()
+        print("TestCal  test_01login")
 
     @classmethod
     def tearDownClass(cls):
-        pass
+        print("TestCal  tearDownClass")
+        cls.driver.quit()
+
+#
+#
+# class test_calculator(unittest.TestCase):
+#     @classmethod
+#     def setUpClass(cls):
+#         cls.driver = GetAppDriver().get_driver()
+#         # test()
+#         time.sleep(5)
+#         print("CalTest =setUpClass")
+#
+#     def setUp(self):
+#         time.sleep(2)
+#         print("CalTest =setUp")
+#
+#     def tearDown(self):
+#         time.sleep(2)
+#         print("CalTest =tearDown")
+#         # 截图
+#         # Tools().get_images()
+#
+#     @classmethod
+#     def tearDownClass(cls):
+#         time.sleep(2)
+#         cls.driver.quit()
+#         print("CalTest =tearDownClass")
+#         pass
+#
+
+# if __name__ == '__main__':
+#     unittest.main()
 
 # webdriver.Remote(DeviceParameter.desired_IP, VirtualDeviceParameter().get_desired_caps())

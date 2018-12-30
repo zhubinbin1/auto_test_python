@@ -4,7 +4,7 @@ description:手势操作
 '''
 
 
-class gesture_mainpulation:
+class GestureMainpulation:
     def swipe_left(self, driver):
         '''左滑'''
         x = driver.get_window_size()['width']

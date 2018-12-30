@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from config import Globalparameter
+from config import GlobalParameter
 from src.Utils.DevicesInfo import DevicesInfo
 
 # IP/端口
@@ -39,7 +39,7 @@ class DeviceParameter(object):
             self.desired_caps["resetKeyboard"] = self.ResetKeyboard
             self.desired_caps["automationName"] = self.AutomationName
             self.desired_caps["autoGrantPermissions"] = self.AutoGrantPermissions
-            self.desired_caps['app'] = Globalparameter.app_path  # 指向.apk文件，如果设置appPackage和appActivity，那么这项会被忽略
+            self.desired_caps['app'] = GlobalParameter.app_path  # 指向.apk文件，如果设置appPackage和appActivity，那么这项会被忽略
             self.desired_caps['newCommandTimeout'] = '120'  # Appium服务器待appium客户端发送新消息的时间。默认为60秒
             # noReset决定是否清除app数据
             self.desired_caps["noReset"] = self.NoReset
@@ -99,7 +99,7 @@ class VirtualDeviceParameter(DeviceParameter):
         desired_caps["appPackage"] = "com.android.calculator2"
         # DeviceParameter.package_name  # "com.android.calculator2"
         desired_caps["appActivity"] = ".Calculator"  # DeviceParameter.appActivity  # ".Calculator"
-        desired_caps["device"] = Globalparameter.device_name
-        desired_caps["deviceName"] = Globalparameter.device_name
-        desired_caps["platformVersion"] = Globalparameter.device_version
+        desired_caps["device"] = GlobalParameter.device_name
+        desired_caps["deviceName"] = GlobalParameter.device_name
+        desired_caps["platformVersion"] = GlobalParameter.device_version
         return desired_caps

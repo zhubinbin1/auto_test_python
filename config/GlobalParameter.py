@@ -9,7 +9,7 @@ device_version = "9"
 app_package = "com.android.calculator2"
 app_activity = ".Calculator"
 app_path = "/Users/binbin/Desktop/thevoiceDebug-minApi17-x86.apk"
-pattern = "test*.py"
+pattern = "test_cal*.py"  # "test*.py"
 
 # 设置发送测试报告的公共邮箱、用户名和密码
 # https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256
