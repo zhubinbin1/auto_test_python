@@ -5,24 +5,17 @@ description:执行测试
 '''
 import unittest, time
 from src.common import HTMLTestRunner
-from config.Globalparameter import test_case_path, report_name
 from src.common import send_email
+from src.Utils.FileUtil import test_case_path, report_file_name
+
 import os
 
 # 构建测试集,包含src/test_case目录下的所有以test开头的.py文件
-suite = unittest.defaultTestLoader.discover(start_dir=test_case_path, pattern='test*.py')
-
-
-def create_report_path(path):
-    path_name = os.path.dirname(path)
-    if not os.path.exists(path_name):
-        os.makedirs(path_name)
-
+suite = unittest.defaultTestLoader.discover(start_dir=test_case_path(), pattern='test*.py')
 
 # 执行测试
 if __name__ == "__main__":
-    create_report_path(report_name)
-    report = report_name + "Report.html"
+    report = report_file_name() + "Report.html"
     fb = open(report, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
         stream=fb,

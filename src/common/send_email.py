@@ -7,6 +7,7 @@ import os, smtplib, os.path
 from config import Globalparameter as gl
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from src.Utils.FileUtil import report_file_path
 
 
 class send_email:
@@ -38,9 +39,10 @@ class send_email:
 
     def sendReport(self):
         # 找到最新的测试报告
-        report_list = os.listdir(gl.report_path)
+        report_list = os.listdir(report_file_path())
         report_list.sort(
-            key=lambda fn: os.path.getmtime(gl.report_path + fn) if not os.path.isdir(gl.report_path + fn) else 0)
-        new_report = os.path.join(gl.report_path, report_list[-1])
+            key=lambda fn: os.path.getmtime(report_file_path() + fn) if not os.path.isdir(
+                report_file_path() + fn) else 0)
+        new_report = os.path.join(report_file_path(), report_list[-1])
         # 发送邮件
         self.email_init(new_report, report_list[-1])

@@ -11,10 +11,6 @@ app_activity = ".Calculator"
 app_path = "/Users/binbin/Desktop/thevoiceDebug-minApi17-x86.apk"
 pattern = "test*.py"
 
-project_path = os.path.abspath(os.path.join(os.path.dirname(os.path.split(os.path.realpath(__file__))[0]), '.'))
-test_case_path = project_path + "/src/test_case"
-report_path = project_path + "/report/"
-report_name = report_path + time.strftime('%Y%m%d%H%S', time.localtime())
 # 设置发送测试报告的公共邮箱、用户名和密码
 # https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256
 #  password :  hhntpsqaangwjaib
