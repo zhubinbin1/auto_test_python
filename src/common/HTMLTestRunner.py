@@ -98,8 +98,8 @@ import time
 import unittest
 from xml.sax import saxutils
 
-reload(sys)
-sys.setdefaultencoding('utf-8')
+# reload(sys)
+# sys.setdefaultencoding('utf-8')
 
 
 # ------------------------------------------------------------------------
