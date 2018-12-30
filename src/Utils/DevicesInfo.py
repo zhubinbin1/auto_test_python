@@ -1,7 +1,7 @@
 # coding=utf-8
 import re
 import subprocess
-from src.Utils.Common import singleton
+from src.common.Common import singleton
 
 # ----------
 # 设备信息

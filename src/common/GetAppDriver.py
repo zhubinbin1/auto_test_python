@@ -1,8 +1,7 @@
 # coding=utf-8
 from appium import webdriver
-from src.Utils.Common import singleton
+from src.common.Common import singleton
 from src.common import driver_configure
-from src.common.driver_configure import DeviceParameter
 from src.common.driver_configure import VirtualDeviceParameter
 from src.Utils.DevicesInfo import DevicesInfo
 

@@ -6,7 +6,6 @@ import re
 import time
 import datetime
 from src.common.GetAppDriver import GetAppDriver
-from src.Utils.FileUtil import create_current_path
 from src.Utils.FileUtil import img_file_path
 
 
