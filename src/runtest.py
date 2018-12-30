@@ -4,7 +4,7 @@
 description:执行测试
 '''
 import unittest, time
-from lib import HTMLTestRunner
+from src.common import HTMLTestRunner
 from config.Globalparameter import test_case_path, report_name
 from src.common import send_email
 import os
