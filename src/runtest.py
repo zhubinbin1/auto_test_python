@@ -12,10 +12,16 @@ import os
 # 构建测试集,包含src/test_case目录下的所有以test开头的.py文件
 suite = unittest.defaultTestLoader.discover(start_dir=test_case_path, pattern='test*.py')
 
+
+def create_report_path(path):
+    path_name = os.path.dirname(path)
+    if not os.path.exists(path_name):
+        os.makedirs(path_name)
+
+
 # 执行测试
 if __name__ == "__main__":
-    if not os.path.exists(report_name):
-        os.makedirs(report_name)
+    create_report_path(report_name)
     report = report_name + "Report.html"
     fb = open(report, 'wb')
     runner = HTMLTestRunner.HTMLTestRunner(
