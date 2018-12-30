@@ -1,12 +1,12 @@
 # coding:utf-8
 
-# coding:utf-8
-__author__ = 'Helen'
+
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+
 '''
 description:UI页面公共类
 '''
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
 
 
 class BasePage:

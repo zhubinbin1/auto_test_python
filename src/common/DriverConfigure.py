@@ -76,7 +76,7 @@ class DeviceParameter(object):
 #         return desired_caps
 #
 #
-# # 虚拟设备
+# # 虚拟设备 --平时测试用的--测试系统计算机
 class VirtualDeviceParameter(DeviceParameter):
     @staticmethod
     def get_desired():
@@ -99,7 +99,7 @@ class VirtualDeviceParameter(DeviceParameter):
         desired_caps["appPackage"] = "com.android.calculator2"
         # DeviceParameter.package_name  # "com.android.calculator2"
         desired_caps["appActivity"] = ".Calculator"  # DeviceParameter.appActivity  # ".Calculator"
-        desired_caps["device"] = GlobalParameter.device_name
-        desired_caps["deviceName"] = GlobalParameter.device_name
-        desired_caps["platformVersion"] = GlobalParameter.device_version
+        desired_caps["device"] = "emulator-5554"
+        desired_caps["deviceName"] = "emulator-5554"
+        desired_caps["platformVersion"] = "9"
         return desired_caps
