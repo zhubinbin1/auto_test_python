@@ -17,6 +17,7 @@ class DeviceParameter(object):
     ResetKeyboard = True  # 是否在测试结束后将键盘重轩为系统默认的输入法。
     NoReset = True  # true:不重新安装APP，false:重新安装app
     appActivity = "com.ushowmedia.starmaker.activity.SplashActivity"
+    waitActivity = "com.ushowmedia.starmaker.activity.MainActivity"
     package_name = "com.starmakerinteractive.thevoice"  # GetDevicesInfo().GetPackages()#
 
     def get_desired_caps(self):
@@ -32,6 +33,7 @@ class DeviceParameter(object):
             # 待测包信息
             self.desired_caps["appPackage"] = device_info.get_package()  # self.package_name  # APK包名
             self.desired_caps["appActivity"] = self.appActivity  # 被测程序启动时的Activity
+            self.desired_caps["appWaitActivity"] = self.waitActivity
             # 其他
             self.desired_caps["unicodeKeyboard"] = self.UnicodeKeyboard
             self.desired_caps["resetKeyboard"] = self.ResetKeyboard
@@ -90,12 +92,13 @@ class VirtualDeviceParameter(DeviceParameter):
         desired_caps["resetKeyboard"] = DeviceParameter.ResetKeyboard
         desired_caps["automationName"] = DeviceParameter.AutomationName
         desired_caps["autoGrantPermissions"] = DeviceParameter.AutoGrantPermissions
-        desired_caps['app'] = Globalparameter.app_path  # 指向.apk文件，如果设置appPackage和appActivity，那么这项会被忽略
+        # desired_caps['app'] = Globalparameter.app_path  # 指向.apk文件，如果设置appPackage和appActivity，那么这项会被忽略
         desired_caps['newCommandTimeout'] = '120'  # Appium服务器待appium客户端发送新消息的时间。默认为60秒
         # noReset决定是否清除app数据
         desired_caps["noReset"] = DeviceParameter.NoReset
-        desired_caps["appPackage"] = DeviceParameter.package_name  # "com.android.calculator2"
-        desired_caps["appActivity"] = DeviceParameter.appActivity  # ".Calculator"
+        desired_caps["appPackage"] = "com.android.calculator2"
+        # DeviceParameter.package_name  # "com.android.calculator2"
+        desired_caps["appActivity"] = ".Calculator"  # DeviceParameter.appActivity  # ".Calculator"
         desired_caps["device"] = Globalparameter.device_name
         desired_caps["deviceName"] = Globalparameter.device_name
         desired_caps["platformVersion"] = Globalparameter.device_version

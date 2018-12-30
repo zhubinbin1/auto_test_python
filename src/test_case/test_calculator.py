@@ -10,17 +10,16 @@ from src.Utils.Tools import Tools
 def test():
     device_info = DevicesInfo()
     device_info.get_serialno()
-    # device_info.print_device_info()
+    device_info.print_device_info()
     driver = GetAppDriver().get_driver()
-
-
-test()
+    print(driver.page_source)
 
 
 class CalTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = GetAppDriver().get_driver()
+        test()
         time.sleep(5)
 
     def setUp(self):
