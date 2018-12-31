@@ -22,7 +22,7 @@ class Tools:
 
     @staticmethod
     def get_images():
-        driver = GetAppDriver().driver
+        driver = GetAppDriver().get_driver()
         # 定义路径
         # (datetime.datetime.now() + datetime.timedelta(days=-1)).strftime('%Y%m%d_%H.%M.%S')
         nowtime = Tools.get_current_time()
@@ -35,7 +35,7 @@ class Tools:
     # 元素未找到截图,并保存在images文件夹
     @staticmethod
     def get_element_error_images():
-        driver = GetAppDriver().driver
+        driver = GetAppDriver().get_driver()
         # 定义路径
         png_file = "../TestReport/images/"
         # 获取当前时间，且days-1，以展示在报告截图最下方
@@ -68,7 +68,7 @@ class Tools:
 # 提取该页面同一类型下的所有元素text
 class Page_Element_Verification(object):
     def __init__(self):
-        self.driver = GetAppDriver().driver
+        self.driver = GetAppDriver().get_driver()
         time.sleep(5)
 
     # 适用进入页面时校验页面元素加载正确，且这些元素具备同ID/Class或其他
@@ -126,7 +126,7 @@ class Page_Element_Verification(object):
 # ----------
 class Screen(object):
     def __init__(self):
-        self.driver = GetAppDriver().driver
+        self.driver = GetAppDriver().get_driver()
         # 获取屏幕的size
         self.size = self.driver.get_window_size()
         print(self.size)
@@ -224,7 +224,7 @@ class Screen(object):
 # 区域滑动
 class RegionalSliding(object):
     def __init__(self, elements):
-        self.driver = GetAppDriver().driver
+        self.driver = GetAppDriver().get_driver()
         ele = self.driver.find_element_by_id(elements)
         # 获取当前元素大小
         size = ele.size
@@ -267,7 +267,7 @@ class RegionalSliding(object):
 # 区域点击(针对NAF=true的元素进行点击)
 class RegionalClick(object):
     def __init__(self, elements):
-        self.driver = GetAppDriver().driver
+        self.driver = GetAppDriver().get_driver()
         # 获取当前元素bounds
         bounds = self.driver.find_element_by_id(elements).get_attribute("bounds")
         time.sleep(2)

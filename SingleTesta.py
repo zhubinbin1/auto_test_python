@@ -23,20 +23,27 @@ cmd = "adb devices"
 
 import re
 
-deviceInfo = subprocess.check_output("adb devices -l",shell=True).decode("utf-8", "ignore")
-deviceName = re.findall(r"device product:(.*)\smodel", deviceInfo, re.S)[0]
-deviceModel = re.findall(r"model:(.*)\sdevice", deviceInfo, re.S)[0]
-print(deviceName)
-print(deviceModel)
-
-all_packages = subprocess.check_output("adb shell pm list packages",shell=True).decode("utf-8", "ignore")
-list_packages = re.findall(r"package:(.*)", all_packages, re.S)[0]
-our_packages = ["com.starmakerinteractive.starmaker", "com.starmakerinteractive.thevoice",
-                                "com.horadrim.android.sargam", "com.windforce.android.suaraku"]
-f = [c for c in our_packages if c in list_packages]
-if len(f):
-    print(f)
-
+# string = "a  a  b  c  d  e  f  r"
+# regex = re.compile("((\w+)\s+\w+)")
+# print(regex.findall(string))
+#
+# regex1 = re.compile("(\w+)\s+\w+")
+# print(regex1.findall(string))
+# regex2 = re.compile("\w+\s+\w+")
+# print(regex2.findall(string))
+# deviceInfo = subprocess.check_output("adb devices -l",shell=True).decode("utf-8", "ignore")
+# deviceName = re.findall(r"device product:(.*)\smodel", deviceInfo, re.S)[0]
+# deviceModel = re.findall(r"model:(.*)\sdevice", deviceInfo, re.S)[0]
+# print(deviceName)
+# print(deviceModel)
+#
+# all_packages = subprocess.check_output("adb shell pm list packages",shell=True).decode("utf-8", "ignore")
+# list_packages = re.findall(r"package:(.*)", all_packages, re.S)[0]
+# our_packages = ["com.starmakerinteractive.starmaker", "com.starmakerinteractive.thevoice",
+#                                 "com.horadrim.android.sargam", "com.windforce.android.suaraku"]
+# f = [c for c in our_packages if c in list_packages]
+# if len(f):
+#     print(f)
 
 
 # b'List of devices attached\nemulator-5554\tdevice\n\n'

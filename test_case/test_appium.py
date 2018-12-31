@@ -7,7 +7,7 @@ import unittest
 # from src.pages import index_page, myInfo_page, login_page, relative_page
 from src.utils import GestureOperation
 from src.common.GetAppDriver import GetAppDriver
-from src.page import LoginPage
+from src.page.LoginPage import LoginPage
 
 
 class TestAppium(unittest.TestCase):
@@ -15,6 +15,7 @@ class TestAppium(unittest.TestCase):
     def setUpClass(cls):
         driver = GetAppDriver()
         cls.driver = driver.get_driver()
+        cls.login_page = LoginPage(cls.driver)
         # cls.driver.quit()
         cls.GM = GestureOperation.GestureMainpulation()
         print("test_appium =test_appium")
@@ -30,10 +31,10 @@ class TestAppium(unittest.TestCase):
         # self.myInfo_page = myInfo_page.myInfo_page(self.driver)
         # self.myInfo_page.click_login_btn()
         # 登录页
-        self.login_page = LoginPage.login_page(self.driver)
-        self.login_page.input_user("lihailing@xsteqach.com")
-        self.login_page.input_Pws("123456")
-        self.login_page.click_btnLogin()
+
+        self.login_page.input_user("binbin")
+        self.login_page.input_pws("123456")
+        self.login_page.click_btn_login()
         # self.assertEqual(u'签到', self.myInfo_page.getText_signHint())
 
     # def test_02loginOut(self):

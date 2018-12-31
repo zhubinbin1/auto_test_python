@@ -3,6 +3,9 @@
 from src.common.GetAppDriver import GetAppDriver
 from src.utils.DevicesInfo import DevicesInfo
 import unittest
+from src.utils.FindElement import find_element
+from selenium.webdriver.common.by import By
+from src.page.CalucPage import CalucPage
 import time
 from src.utils.Tools import Tools
 
@@ -23,39 +26,35 @@ class TestCal(unittest.TestCase):
     def setUpClass(cls):
         driver = GetAppDriver()
         cls.driver = driver.get_driver()
-        # ctx = cls.driver.context
-        # ctxs = cls.driver.contexts
-        # print(ctx, ctxs)
-        cls.foo = list(range(10))
-        print('+' * 30)
-        print("TestCal  setUpClass")
+        cls.page = CalucPage(cls.driver)
+        print('+' * 30 + "start\n")
 
-    def test_1calcLogin(self):
-        test()
+    def test_1(self):
+        print("*" * 30 + "test_1\n")
+        self.page.click_text("7")
+        self.page.click_text("8")
+        # self.driver.find_elements_by_android_uiautomator()
+        time.sleep(1)
+        # self.page.click_text("+")
+        # self.page.click_text("DEL")
+        time.sleep(1)
+        self.page.click_text("9")
+        # self.page.click_text("=")
+        print("输出：== ")
 
-    def test_4calcLogin(self):
-        test()
+    def test_2(self):
+        pass
+        # test()
         # print("TestCal  test_01login")
 
     @classmethod
     def tearDownClass(cls):
-        print("=" * 30)
+        print('=' * 30 + "end\n")
+        ss = cls.driver.find_elements_by_class_name("android.widget.Button")
+        for key in ss:
+            print(key.get_attribute("text"))
+        # print("=" * 30)
         # cls.driver.quit()
-
-    def test_2st(self):
-        self.assertEqual(self.foo.pop(), 9)
-        # print(self.foo)
-        print("+" * 30, "test_2nd")
-
-    def test_3nd(self):
-        # self.assertEqual(self.foo.pop(), 18)
-        print(self.foo, "test_3nd")
-        # print(3/0)
-
-    # def setUp(self):
-    #     self.foo = list(range(10))
-    #     print(self.foo)
-    #     print("=" * 30)
 
 
 if __name__ == '__main__':

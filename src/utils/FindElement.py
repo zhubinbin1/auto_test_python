@@ -2,9 +2,11 @@
 from src.common.GetAppDriver import GetAppDriver
 from src.utils.Tools import Tools
 from appium.webdriver.webdriver import WebDriverWait
+from src.common.Common import singleton
 
 
 # 查找元素，如果存在返回元素，否则截图
+@singleton
 class find_element(object):
     def __init__(self):
         self.driver = GetAppDriver().get_driver()
