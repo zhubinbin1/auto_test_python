@@ -9,7 +9,7 @@ from src.page.CalucPage import CalucPage
 import time
 from test_case.BaseTestCase import BaseTestCase
 from src.utils.Tools import Tools
-
+from src.utils.Logger import Logger
 
 # from public.logger import Logger
 
@@ -42,6 +42,7 @@ class TestCal(unittest.TestCase):
         driver = GetAppDriver()
         cls.driver = driver.get_driver()
         cls.page = CalucPage(cls.driver)
+        cls.logger = Logger("info")
         print('+' * 30 + "start\n")
 
     def test_1(self):
@@ -56,6 +57,8 @@ class TestCal(unittest.TestCase):
         self.page.click_text("÷")
         self.page.click_text("7")
         self.page.click_text_by_au("=")
+        # self.logger.info("=============="*10)
+
 
     def test_2(self):
         pass
@@ -63,11 +66,12 @@ class TestCal(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         print('=' * 30 + "end\n")
+        cls.logger.close()
         # ss = cls.driver.find_elements_by_class_name("android.widget.Button")
         # for key in ss:
         #     print(key.get_attribute("text"))
         # cls.driver.quit()
 
 
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()

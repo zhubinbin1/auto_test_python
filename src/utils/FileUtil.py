@@ -21,11 +21,31 @@ def img_file_path():
     return img_file
 
 
+def log_file_path():
+    log_file = os.path.abspath(os.path.dirname(project_path())) + "/report/log/"
+    create_current_path(log_file)
+    return log_file
+
+
 # src 目录
 def project_path():
     return os.path.abspath(os.path.join(os.path.dirname(os.path.split(os.path.realpath(__file__))[0]), '.'))
 
 
+def get_sdk_app_file():
+    for root, dirs, files in os.walk(project_parent_path() + "/sdk/"):
+        # print(root, end=' ')  # 当前目录路径
+        # print(dirs, end=' ')  # 当前路径下的所有子目录
+        # print(files)  # 当前目录下的所有非目录子文件
+        if not dirs:
+            # print("=如果手机没有安装app请放置app包到sdk下自动安装=")
+            return ""
+        else:
+            return dirs[0]
+    # print(os.listdir(project_parent_path() + "/sdk/"))
+
+
+# src 目录的上一级
 def project_parent_path():
     return os.path.abspath(os.path.dirname(project_path()))
 
@@ -101,7 +121,13 @@ def read_email_user():
     return email_user_list
 
 
-read_email_user()
+'''app的路径 可以自动装载--默认可以写到工程的sdk目录下，通过读取sdk目录进行装在'''
+app_path = get_sdk_app_file()  # "/Users/binbin/Desktop/thevoiceDebug-minApi17-x86.apk"
+
+'''日志系统的本地存路径'''
+log_path = log_file_path()
+# read_email_user()
+# get_sdk_app_file()
 # read_file_by_read_lines(project_parent_path() + '/email_title')
 # /Users/binbin/WORK/PY_WORKSPACE/start_maker_auto_test/src/.
 # /Users/binbin/WORK/PY_WORKSPACE/start_maker_auto_test/src

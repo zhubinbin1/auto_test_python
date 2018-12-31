@@ -1,7 +1,7 @@
 # coding=utf-8
 
-from config import GlobalParameter
 from src.utils.DevicesInfo import DevicesInfo
+from src.utils.FileUtil import app_path
 
 # IP/端口
 desired_IP = "http://127.0.0.1:4723/wd/hub"
@@ -39,7 +39,7 @@ class DeviceParameter(object):
             self.desired_caps["resetKeyboard"] = self.ResetKeyboard
             self.desired_caps["automationName"] = self.AutomationName
             self.desired_caps["autoGrantPermissions"] = self.AutoGrantPermissions
-            self.desired_caps['app'] = GlobalParameter.app_path  # 指向.apk文件，如果设置appPackage和appActivity，那么这项会被忽略
+            self.desired_caps['app'] = app_path  # 指向.apk文件，如果设置appPackage和appActivity，那么这项会被忽略
             self.desired_caps['newCommandTimeout'] = '120'  # Appium服务器待appium客户端发送新消息的时间。默认为60秒
             # noReset决定是否清除app数据
             self.desired_caps["noReset"] = self.NoReset
