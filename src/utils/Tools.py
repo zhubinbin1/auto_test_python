@@ -29,7 +29,7 @@ class Tools:
         # 定义图片名称
         img_name = nowtime + Tools._PNG
         # 截图
-        driver.get_screenshot_as_file('%s%s' % (img_file_path, img_name))
+        driver.get_screenshot_as_file('%s%s' % (img_file_path(), img_name))
         print('screenshot:', nowtime, Tools._PNG)
 
     # 元素未找到截图,并保存在images文件夹
@@ -37,14 +37,13 @@ class Tools:
     def get_element_error_images():
         driver = GetAppDriver().get_driver()
         # 定义路径
-        png_file = "../TestReport/images/"
-        # 获取当前时间，且days-1，以展示在报告截图最下方
-        nowtime = Tools.get_current_time()
+        png_file = img_file_path()
         # 定义图片名称
-        img_name = nowtime + Tools._PNG
+        img_name = Tools.get_current_time() + Tools._PNG
+        file_name = str(png_file) + img_name
         # 截图
-        driver.get_screenshot_as_file('%s%s' % (png_file, img_name))
-        print('screenshot:', nowtime, Tools._PNG)
+        driver.get_screenshot_as_file(file_name)
+        print('screenshot:', file_name, Tools._PNG)
 
     # 动态元素转换
     @staticmethod

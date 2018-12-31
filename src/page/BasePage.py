@@ -52,7 +52,7 @@ class BasePage:
 
     def find_e_by_text(self, text):
         try:
-            return self.find_e_by_xpath(".//*[@text=" + text + "]")
+            return self.find_e_by_xpath("//*[@text=" + text + "]")
         except Exception as e:
             raise e
 

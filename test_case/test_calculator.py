@@ -35,7 +35,7 @@ class TestCal(unittest.TestCase):
         self.page.click_text("8")
         # self.driver.find_elements_by_android_uiautomator()
         time.sleep(1)
-        # self.page.click_text("+")
+        self.page.click_text("+")
         # self.page.click_text("DEL")
         time.sleep(1)
         self.page.click_text("9")

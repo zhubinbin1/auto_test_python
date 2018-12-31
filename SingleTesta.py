@@ -5,10 +5,11 @@ import calendar
 import subprocess
 import os
 import time
+from src.utils.Tools import Tools
 
 # ca = calendar.month(2019, 1)
 # p = subprocess.check_output("adb devices")
-cmd = "adb devices"
+Tools.get_element_error_images()
 # f = subprocess.call(['adb','devices'])
 # print(f)
 # f2 = os.popen(r"adb devices","r")
