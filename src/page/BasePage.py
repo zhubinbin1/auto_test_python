@@ -52,12 +52,15 @@ class BasePage:
 
     def find_e_by_text(self, text):
         try:
-            return self.find_e_by_xpath("//*[@text=" + text + "]")
+            '''注意字符转译'''
+            # self.driver.find_element_by_xpath("//*[@text='+']").click()
+            return self.find_e_by_xpath("//*[@text=\"" + text + "\"]")
         except Exception as e:
             raise e
 
     def find_e_by_cla(self, cla):
         try:
+            # self.driver.find_element_by_android_uiautomator('new UiSelector().className(\"'+au+'\")')
             # self.driver.find_element_by_xpath("//*[@class='android.widget.EditText']").click()
             return self.get_element.Cla(cla)
         except Exception as e:
@@ -66,5 +69,16 @@ class BasePage:
     def find_e_by_android_uiautomator(self, AU):
         try:
             return self.get_element.AU(AU)
+        except Exception as e:
+            raise e
+
+    def find_e_text_by_au(self, au):
+        try:
+            '''注意字符转译'''
+            # new UiSelector().resourceIdMatches(".+id/title")  UiSelector方法很多，可以网上找
+            # self.driver.find_element_by_android_uiautomator('new UiSelector().className(\"'+au+'\")')
+            # return self.driver.find_element_by_android_uiautomator('new UiSelector().text("+")')
+            au_f = 'new UiSelector().text(\"' + au + '\")'
+            return self.get_element.AU(au_f)
         except Exception as e:
             raise e

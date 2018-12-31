@@ -7,6 +7,7 @@ from src.utils.FindElement import find_element
 from selenium.webdriver.common.by import By
 from src.page.CalucPage import CalucPage
 import time
+from test_case.BaseTestCase import BaseTestCase
 from src.utils.Tools import Tools
 
 
@@ -22,6 +23,20 @@ def test():
 
 
 class TestCal(unittest.TestCase):
+    '''
+    关键字：
+    =
+    DEL
+    ÷
+    ×
+    −
+    +
+    INV
+    sin
+    ln
+    π
+    '''
+
     @classmethod
     def setUpClass(cls):
         driver = GetAppDriver()
@@ -32,28 +47,25 @@ class TestCal(unittest.TestCase):
     def test_1(self):
         print("*" * 30 + "test_1\n")
         self.page.click_text("7")
-        self.page.click_text("8")
-        # self.driver.find_elements_by_android_uiautomator()
-        time.sleep(1)
-        self.page.click_text("+")
-        # self.page.click_text("DEL")
-        time.sleep(1)
+        self.page.click_text_by_au("8")
+        self.page.click_text('+')
         self.page.click_text("9")
-        # self.page.click_text("=")
-        print("输出：== ")
+        self.page.click_text("DEL")
+        self.page.click_text("7")
+        self.page.click_text("7")
+        self.page.click_text("÷")
+        self.page.click_text("7")
+        self.page.click_text_by_au("=")
 
     def test_2(self):
         pass
-        # test()
-        # print("TestCal  test_01login")
 
     @classmethod
     def tearDownClass(cls):
         print('=' * 30 + "end\n")
-        ss = cls.driver.find_elements_by_class_name("android.widget.Button")
-        for key in ss:
-            print(key.get_attribute("text"))
-        # print("=" * 30)
+        # ss = cls.driver.find_elements_by_class_name("android.widget.Button")
+        # for key in ss:
+        #     print(key.get_attribute("text"))
         # cls.driver.quit()
 
 
