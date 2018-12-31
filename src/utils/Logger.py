@@ -16,15 +16,22 @@ setting = {
 }
 
 
-def pull_app_log():
-    import subprocess
-    subprocess.check_output("adb logcat adb logcat -v time > " + log_path + "autoTest.txt", shell=True)
-
-
 class Logger(object):
     '''https://blog.csdn.net/qq_42758861/article/details/82593777'''
 
-    def __init__(self, logger):
+    def open_app_log(self):
+        import subprocess
+        # subprocess.check_output("adb logcat -v time > " + log_path + "autoTest.txt", shell=True)
+        filename = "adb logcat -v time > " + log_path + "autoTest.txt"
+        self.app_loger_process = subprocess.Popen(filename, shell=True)
+
+    def close_app_log(self):
+        import subprocess
+        # subprocess.check_output("adb logcat adb logcat -v time > " + log_path + "autoTest.txt", shell=True)
+        if hasattr(self, 'app_loger_process'):
+            self.app_loger_process.terminate()
+
+    def __init__(self, logger="info"):
         if not is_open_log_system:
             return
         try:
@@ -102,8 +109,11 @@ class Logger(object):
     # def close(self):
     #     self.logger.addHandler(self.fh)
     #     self.logger.removeHandler(self.fh)
-
 # if __name__ == "__main__":
 #     logger = Logger("info")
 #     logger.info(msg='warning')
+#     logger.open_app_log()
+#     time.sleep(5)
+#     print("*"*30)
+#     logger.close_app_log()
 # pull_app_log()
